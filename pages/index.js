@@ -24,24 +24,19 @@ export default function Home() {
     "signature-drop"
   );
 
-  useEffect(() => {
-    setMintSuccess(false);
-  })
 
   const claim = async () => {
-    setNftInfo({nfts: 'jj'});
+    try {
+      const tx = await signatureDrop?.claim(1);
+      console.log(tx);
+      toast.success(`Succesfully minted NFT!`);
+      const nfts = await signatureDrop.get(Number(tx[0].id));
+      setNftInfo(nfts);
       setMintSuccess(true);
-    // try {
-    //   const tx = await signatureDrop?.claim(1);
-    //   console.log(tx);
-    //   toast.success(`Succesfully minted NFT!`);
-    //   const nfts = await signatureDrop.get(Number(tx[0].id));
-    //   setNftInfo(nfts);
-    //   setMintSuccess(true);
-    // } catch (error) {
-    //   // alert(error?.message);
-    //   toast.error("An error occured!!");
-    // }
+    } catch (error) {
+      // alert(error?.message);
+      toast.error("An error occured!!");
+    }
   }
 
   const claimWithSignature = async () => {
