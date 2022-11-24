@@ -1,0 +1,2 @@
+export const signatureDropAddress = "0xE95B19e883607829959cacD578451049F1794910";
+export const PRIVATE_KEY = "e6ff31c6afb5fe417cf0e5f63215f87496d8891a12152eb131e0def45685921a";
